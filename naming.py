@@ -1,4 +1,22 @@
-def create_title(dir): 
+"""naming script
+
+This script writes a properly formatted description and title.
+
+This file can also be imported as a module and contains the following
+functions:
+    * create_title - Creates formatted description and title
+"""
+
+
+def create_title(dir: str): 
+    """Creates two files holding a description and title of a video
+
+    Args:
+        dir (str): The directory for the files to be saved in
+
+    Returns:
+        None
+    """
     # read the ytdescription file
     # directory = "10.11.2019 - completed/submission3"
     desc_f = open("{}/.ytdescription.txt".format(dir), "r")

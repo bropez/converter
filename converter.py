@@ -1,10 +1,33 @@
+"""Converter
+
+This script takes a set of .png's and .mp3's of the same name and converts
+them into a .mp4 with said name.
+
+This script requires that `os`, `moviepy`, `datetime`, and `tqdm` all be 
+installed within the Python environment you are running this script in.
+
+This file can also be imported as a module and contains the following 
+funtions:
+	* get_baddies 	- Gets all of the pictures that couldn't be cropped correctly
+	* conversion 	- Combines a .png and .mp3 into a .mp4
+"""
+
+
 import os
 from moviepy.editor import AudioFileClip
 import datetime
 from tqdm import tqdm
 
 
-def get_baddies(dir):
+def get_baddies(dir: str):
+	"""Gets a list of comments that couldn't be cropped correctly
+
+	Args:
+		dir (str): A directory that .comment_errors.txt is saved in
+
+	Returns:
+		data (list): A list of the comments that weren't properly cropped
+	"""
 	try:
 		with open("{}/.comment_errors.txt".format(dir), "r") as file:
 			data = file.read().splitlines()
@@ -16,7 +39,15 @@ def get_baddies(dir):
 	
 
 
-def conversion(dir):
+def conversion(dir: str):
+	"""Combines a .png and .mp3 to create a .mp4
+
+	Args:
+		dir (str): A directory that pictures, sounds, and movies directories are saved in
+
+	Returns:
+		None
+	"""
 	picture_dir = "{}/pictures".format(dir)
 	sound_dir = "{}/sounds".format(dir)
 	movie_dir = "{}/movies".format(dir)

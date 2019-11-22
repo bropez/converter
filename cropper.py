@@ -1,7 +1,31 @@
+"""Picture Cropping
+
+This script uses mspaint to crop a specific comment out of a
+picture of a reddit post. It then opens the next picture in the 
+directory and does the same.
+
+This script requires that `pyautogui` be installed within the Python
+environment you are running this script in.
+
+This file can also be imported as a module and contains the following
+functions:
+	* open_in_paint	- Opens the given file in mspaint
+	* crop_it		- Crops the reddit comment out of the entire image
+"""
+
+
 import pyautogui
 
 
-def open_in_paint(name):
+def open_in_paint(name: str):
+	"""Opens a specific file in mspaint
+
+	Args:
+		name (str):			The filename that needs to be opened next
+
+	Returns:
+		None
+	"""
 	joinlocation = pyautogui.locateOnScreen('search/100.png')
 	joinpoint = pyautogui.center(joinlocation)
 	joinx, joiny = joinpoint
@@ -12,7 +36,14 @@ def open_in_paint(name):
 	pyautogui.press('enter')
 
 
-def crop_it(directory, name, num):
+def crop_it(directory: str, name: str, num: int):
+	"""Crops the wanted comment out of the reddit post image
+
+	Args:
+		directory (str):	The directory that the .comment_errors.txt should be saved in
+		name (str):			The name of the file the .png should be saved under
+		num (int):			The id of the photo
+	"""
 	joinlocation = pyautogui.locateOnScreen('search/100.png')
 	joinpoint = pyautogui.center(joinlocation)
 	joinx, joiny = joinpoint
